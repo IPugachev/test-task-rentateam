@@ -46,7 +46,7 @@ export const generatorCategoryData = () => {
   for (let i = 0; i < 10; i++) {
     let newCategory = {}
     newCategory.id = `Category${i}`
-    newCategory.name = `Категория ${i}`
+    newCategory.name = `Кат №${i}`
     newCategory.products = []
     for (let j = 0; j < 7; j++) {
       newCategory.products.push(j + 10 * i)

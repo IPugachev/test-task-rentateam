@@ -1,33 +1,7 @@
 import styled from 'styled-components'
 import { css } from 'styled-components'
-import { ReactComponent as AddIcon } from '../../assets/icons/add-icon.svg'
-import { ReactComponent as DeleteIcon } from '../../assets/icons/delete-icon.svg'
 
-export const ProductSection = styled.section`
-  width: 100%;
-  padding: 40px 0;
-  /* background-color: black; */
-  background-color: ${({ categoryStyleProp }) => (categoryStyleProp ? 'rgb(247, 246, 245)' : 'rgb(255, 255, 255)')};
-`
-
-export const ProductContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 288px);
-  gap: 30px;
-  margin: 0 auto;
-  width: 87%;
-  justify-content: center;
-
-  & h3 {
-    grid-column: 1 / -1;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 32px;
-    font-weight: 400;
-    line-height: 40px;
-    letter-spacing: 0px;
-  }
-`
-export const ProductCard = styled.div`
+export const Card = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -35,10 +9,12 @@ export const ProductCard = styled.div`
   width: 288px;
   height: 360px;
   padding: 16px 40px;
+  color: rgba(157, 157, 157, 1);
   cursor: pointer;
   ${({ availiable }) => availiable && 'display: none'};
   &:hover {
     background-color: ${({ categoryStyleProp }) => (!categoryStyleProp ? 'rgb(247, 246, 245)' : 'rgb(255, 255, 255)')};
+    color: #000;
   }
   &:hover div img {
     transform: scale(1.2);
@@ -52,7 +28,7 @@ export const CardImageBox = styled.div`
   height: 150px;
   margin: 19px 0;
 `
-export const CardButtonsBox = styled.div`
+export const CardButtonsContainer = styled.div`
   position: absolute;
   bottom: 16px;
   right: 16px;
@@ -77,19 +53,6 @@ export const CardButtonsBox = styled.div`
       `}
   }
 `
-export const CardButtonWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 40px;
-  height: 40px;
-  background: ${({ isDisable }) => (isDisable ? '#fff' : '#000')};
-  &:active {
-    transition: background-color 0.15s ease-out;
-    ${({ isDisable }) => !isDisable && 'background: rgba(255, 255, 255, 0.15);'};
-  }
-  border-radius: 50%;
-`
 
 export const Price = styled.span`
   font-family: 'Barlow Condensed', sans-serif;
@@ -98,10 +61,6 @@ export const Price = styled.span`
   line-height: 24px;
   letter-spacing: 0px;
 `
-
-export const AddButton = styled(AddIcon)``
-
-export const DeleteButton = styled(DeleteIcon)``
 
 export const CardImage = styled.img`
   transition: all 0.2s ease-in-out;
@@ -115,7 +74,7 @@ export const CardName = styled.p`
   letter-spacing: 0px;
   text-align: center;
 `
-export const CardPrice = styled.span`
+export const CardDefaultPrice = styled.span`
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 32px;
   color: rgba(228, 0, 43, 1);
