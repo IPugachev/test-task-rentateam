@@ -28,6 +28,32 @@ export const CardImageBox = styled.div`
   height: 150px;
   margin: 19px 0;
 `
+export const CardFlag = styled.div`
+  position: absolute;
+  ${({ flag }) => (flag === 'default' ? 'display:none' : 'display:flex')};
+  background: ${({ flag }) => (flag === 'new' ? 'rgba(228, 0, 43)' : '#000')};
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  z-index: 1;
+`
+export const CardFlagText = styled.span`
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-family: 'Cabin Condensed', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 0px;
+`
+export const CardImage = styled.img`
+  transition: all 0.2s ease-in-out;
+  object-fit: contain;
+`
 export const CardButtonsContainer = styled.div`
   position: absolute;
   bottom: 16px;
@@ -62,10 +88,6 @@ export const Price = styled.span`
   letter-spacing: 0px;
 `
 
-export const CardImage = styled.img`
-  transition: all 0.2s ease-in-out;
-  object-fit: contain;
-`
 export const CardName = styled.p`
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 24px;

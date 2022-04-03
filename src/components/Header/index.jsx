@@ -5,7 +5,7 @@ import { HeaderBasket } from '../HeaderBasket'
 import { MenuNav } from '../MenuNav'
 import { Wrapper } from './styles'
 
-export const Header = () => {
+export const Header = ({ categories }) => {
   const [fixedMenuNav, setFixedMenuNav] = useState(true)
   const [tooltip, setTooltip] = useValidation()
 
@@ -24,7 +24,7 @@ export const Header = () => {
       <HeaderBasket onClick={setTooltip} />
       <DeliverySection tooltipWarning={tooltip} city='Москва' />
       <div ref={headerRef}></div>
-      <MenuNav fixedMenuNav={fixedMenuNav} />
+      <MenuNav fixedMenuNav={fixedMenuNav} categories={categories} />
     </Wrapper>
   )
 }

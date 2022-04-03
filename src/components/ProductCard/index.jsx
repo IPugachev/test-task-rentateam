@@ -2,7 +2,17 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { addProduct, removeProduct } from '../../store/actions/basketActions'
 import { CardButton } from '../UI/button/CardButton'
-import { Card, CardButtonsContainer, CardDefaultPrice, CardImage, CardImageBox, CardName, Price } from './styles'
+import {
+  Card,
+  CardButtonsContainer,
+  CardDefaultPrice,
+  CardFlag,
+  CardFlagText,
+  CardImage,
+  CardImageBox,
+  CardName,
+  Price,
+} from './styles'
 
 export const ProductCard = ({ productData, styleValue, activeDilevery, orderCount }) => {
   const dispatch = useDispatch()
@@ -13,10 +23,14 @@ export const ProductCard = ({ productData, styleValue, activeDilevery, orderCoun
     dispatch(removeProduct(product))
   }
 
+  const flagText = productData.flag === 'new' ? 'Новое' : productData.flag === 'hit' ? 'Хит' : ''
   return (
     <Card availiable={productData.delivery && activeDilevery} categoryStyleProp={styleValue}>
       <CardImageBox>
-        <CardImage src={require(`../../assets/img/${productData.img}`)} alt='' />
+        <CardFlag flag={productData.flag}>
+          <CardFlagText>{flagText}</CardFlagText>
+        </CardFlag>
+        <CardImage src={productData.img} alt='' />
         <CardButtonsContainer isDisable={orderCount ? false : true}>
           <CardButton onClick={() => deleteProductFromBasket(productData)} type={false} />
           <Price>{orderCount}</Price>

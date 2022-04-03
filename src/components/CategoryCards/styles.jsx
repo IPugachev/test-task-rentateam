@@ -13,13 +13,12 @@ export const ProductContainer = styled.div`
   margin: 0 auto;
   width: 87%;
   justify-content: center;
-
-  & h3 {
-    grid-column: 1 / -1;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 32px;
-    font-weight: 400;
-    line-height: 40px;
-    letter-spacing: 0px;
-  }
+`
+export const CategoryName = styled.h4`
+  grid-column: 1 / -1;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: 0px;
 `

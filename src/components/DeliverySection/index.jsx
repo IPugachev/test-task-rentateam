@@ -6,7 +6,7 @@ import { DeliveryButton } from '../UI/button/DeliveryButton'
 import { DeliveryButtonGroup, DeliveryInfoSection, DeliverySectionContainer, Location } from './styles'
 
 export const DeliverySection = ({ tooltipWarning, city }) => {
-  const [activeDileveryButton, setActiveDileveryButton] = useState(false)
+  const [activeDileveryButton, setActiveDileveryButton] = useState(true)
 
   const dispatch = useDispatch()
   const dileveryHandler = (type) => {
@@ -23,12 +23,12 @@ export const DeliverySection = ({ tooltipWarning, city }) => {
         <DeliveryButtonGroup>
           <DeliveryButton
             activeDileveryButton={activeDileveryButton}
-            onClick={() => dileveryHandler(false)}
+            onClick={() => dileveryHandler(true)}
             text='Доставка'
           />
           <DeliveryButton
             activeDileveryButton={!activeDileveryButton}
-            onClick={() => dileveryHandler(true)}
+            onClick={() => dileveryHandler(false)}
             text='Самовывоз'
           />
         </DeliveryButtonGroup>
