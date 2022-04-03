@@ -15,7 +15,6 @@ export const DeliverySection = ({ tooltipWarning, city }) => {
       dispatch(setDeliveryState(type))
     }
   }
-
   return (
     <DeliverySectionContainer>
       <DeliveryInfoSection>

@@ -1,5 +1,16 @@
 import styled from 'styled-components'
+import { keyframes } from 'styled-components'
 import { css } from 'styled-components'
+
+// const rotate = keyframes`
+//   from {
+//     transform: rotate(0deg);
+//   }
+
+//   to {
+//     transform: rotate(360deg);
+//   }
+// `
 
 export const Card = styled.div`
   display: flex;
@@ -19,6 +30,20 @@ export const Card = styled.div`
   &:hover div img {
     transform: scale(1.2);
   }
+  @media (min-width: 1920px) {
+    width: 420px;
+    height: 500px;
+  }
+  @media (max-width: 740px) {
+    width: 225px;
+    height: 260px;
+    padding: 4px 10px;
+  }
+  @media (max-width: 500px) {
+    width: 155px;
+    height: 155px;
+    padding: 4px 10px;
+  }
 `
 export const CardImageBox = styled.div`
   position: relative;
@@ -27,33 +52,52 @@ export const CardImageBox = styled.div`
   width: 216px;
   height: 150px;
   margin: 19px 0;
+  @media (min-width: 1920px) {
+    width: 390px;
+    height: 230px;
+  }
+  @media (max-width: 500px) {
+    width: 108px;
+    height: 75px;
+    margin: 9px 0;
+  }
 `
 export const CardFlag = styled.div`
   position: absolute;
   ${({ flag }) => (flag === 'default' ? 'display:none' : 'display:flex')};
   background: ${({ flag }) => (flag === 'new' ? 'rgba(228, 0, 43)' : '#000')};
-  width: 48px;
-  height: 48px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
   top: 0;
   left: 0;
   justify-content: center;
   z-index: 1;
+  @media (min-width: 1920px) {
+    width: 90px;
+    height: 90px;
+  }
+  @media (max-width: 500px) {
+    width: 40px;
+    height: 40px;
+  }
 `
 export const CardFlagText = styled.span`
   display: flex;
   align-items: center;
   color: #fff;
   font-family: 'Cabin Condensed', sans-serif;
-  font-size: 15px;
+  font-size: 0, 9375rem;
   font-weight: 700;
-  line-height: 18px;
+  line-height: 1.125rem;
   letter-spacing: 0px;
 `
 export const CardImage = styled.img`
   transition: all 0.2s ease-in-out;
   object-fit: contain;
+  width: 100%;
 `
+/* animation: ${rotate} 5s linear infinite; */
 export const CardButtonsContainer = styled.div`
   position: absolute;
   bottom: 16px;
@@ -78,30 +122,40 @@ export const CardButtonsContainer = styled.div`
         box-shadow: none;
       `}
   }
+
+  @media (min-width: 1920px) {
+    bottom: 30px;
+    right: 30px;
+    border-radius: 40px;
+  }
+  @media (max-width: 500px) {
+    bottom: 5px;
+    right: 5px;
+  }
 `
 
 export const Price = styled.span`
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 400;
-  line-height: 24px;
+  line-height: 1.5rem;
   letter-spacing: 0px;
 `
 
 export const CardName = styled.p`
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 400;
-  line-height: 32px;
+  line-height: 2rem;
   letter-spacing: 0px;
   text-align: center;
 `
 export const CardDefaultPrice = styled.span`
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 32px;
+  font-size: 2rem;
   color: rgba(228, 0, 43, 1);
   font-weight: 400;
-  line-height: 40px;
+  line-height: 2.5rem;
   letter-spacing: 0px;
   text-align: center;
 `

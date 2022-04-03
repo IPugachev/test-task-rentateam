@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { store } from '../../store'
-import { Categories, Category, MenuNavReplacer } from './styles'
+import { Categories, Category, CategoryName, MenuNavReplacer } from './styles'
 import { scrollToCategory } from './utils'
 
 export const MenuNav = ({ fixedMenuNav, categories }) => {
-  const [curruntCategory, setCurrentCategory] = useState('null')
+  const categoryFromRedux = useSelector((store) => store.ui.category)
+
+  const [curruntCategory, setCurrentCategory] = useState(categoryFromRedux)
 
   store.subscribe(() => setCurrentCategory(store.getState().ui.category))
 
@@ -14,10 +17,11 @@ export const MenuNav = ({ fixedMenuNav, categories }) => {
       <Categories isFixed={fixedMenuNav}>
         {categories.map((category) => (
           <Category
+            draggable='true'
             key={category.id}
             isCurrent={curruntCategory === category.id}
             onClick={() => scrollToCategory(category.id)}>
-            {category.name}
+            <CategoryName>{category.name}</CategoryName>
           </Category>
         ))}
       </Categories>

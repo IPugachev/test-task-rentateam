@@ -1,17 +1,18 @@
-import React, { useState } from 'react'
-import { store } from '../../store'
+import React from 'react'
+import { useSelector } from 'react-redux'
+
 import { Basket, BasketButton, BasketHeader, BasketPrice, HeaderIcon, MenuBurger, Wrapper } from './styles'
 
 export const HeaderBasket = ({ onClick }) => {
-  const [totalPrice, setTotalPrice] = useState(0)
-  store.subscribe(() => setTotalPrice(store.getState().basket.totalPrice))
+  const price = useSelector((store) => store.basket.totalPrice)
+
   return (
     <Wrapper>
       <BasketHeader>
         <HeaderIcon />
         <MenuBurger />
-        <BasketButton isBasketActive={totalPrice ? false : true} onClick={onClick}>
-          <BasketPrice>{totalPrice} ₽</BasketPrice>
+        <BasketButton isBasketActive={price ? false : true} onClick={onClick}>
+          <BasketPrice>{price} ₽</BasketPrice>
           <Basket />
         </BasketButton>
       </BasketHeader>

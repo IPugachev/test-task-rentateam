@@ -1,21 +1,22 @@
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { store } from '../store'
+import { useDispatch, useSelector } from 'react-redux'
 import { clearBasket } from '../store/actions/basketActions'
+import { postData } from './utils'
 
 export const useValidation = () => {
-  const [addressForm, setAddressForm] = useState(['', ''])
+  const addressFormState = useSelector((store) => store.ui.addressForm)
   const [timerId, settimerId] = useState(null)
   const [tooltipWarning, setTooltipWarning] = useState([])
   const dispatch = useDispatch()
-  store.subscribe(() => setAddressForm(store.getState().ui.addressForm))
 
+  const basketData = useSelector((store) => store.basket.products)
   const validation = () => {
-    if (addressForm[0] && addressForm[1]) {
+    if (addressFormState[0] && addressFormState[1]) {
+      postData('http://localhost:4000/basket', basketData)
       dispatch(clearBasket())
     } else {
-      let side = addressForm[0] ? 'right' : 'left'
-      setTooltipWarning(addressForm[0] ? ['active', side] : ['active', side])
+      let side = addressFormState[0] ? 'right' : 'left'
+      setTooltipWarning(addressFormState[0] ? ['active', side] : ['active', side])
 
       clearTimeout(timerId)
       settimerId(

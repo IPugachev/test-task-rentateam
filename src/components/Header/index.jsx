@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useValidation } from '../../hooks/useValidation'
 import { DeliverySection } from '../DeliverySection'
 import { HeaderBasket } from '../HeaderBasket'
@@ -9,21 +9,21 @@ export const Header = ({ categories }) => {
   const [fixedMenuNav, setFixedMenuNav] = useState(true)
   const [tooltip, setTooltip] = useValidation()
 
-  const headerRef = useRef(null)
   useEffect(() => {
+    const breakPoint = document.getElementById('breakPoint')
     const observer = new IntersectionObserver((entries) => setFixedMenuNav(entries[0].isIntersecting))
 
-    headerRef.current && observer.observe(headerRef.current)
+    breakPoint && observer.observe(breakPoint)
 
     return () => {
-      headerRef.current && observer.unobserve(headerRef.current)
+      breakPoint && observer.unobserve(breakPoint)
     }
-  }, [headerRef])
+  }, [])
   return (
     <Wrapper>
       <HeaderBasket onClick={setTooltip} />
       <DeliverySection tooltipWarning={tooltip} city='Москва' />
-      <div ref={headerRef}></div>
+      <div id='breakPoint'></div>
       <MenuNav fixedMenuNav={fixedMenuNav} categories={categories} />
     </Wrapper>
   )

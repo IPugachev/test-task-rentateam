@@ -11,14 +11,14 @@ export const uiReducer = (state = initialState, action) => {
       if (state.category !== action.payload.category) {
         state.category = action.payload.category
       }
-      return state
+      return { ...state }
     case uiActions.SET_DELIVERY_FORM_STATE:
       if (action.payload.id) {
         state.addressForm[1] = action.payload.value
       } else {
         state.addressForm[0] = action.payload.value
       }
-      return state
+      return { ...state }
     default:
       return state
   }

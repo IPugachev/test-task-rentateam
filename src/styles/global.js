@@ -8,6 +8,13 @@ export const GlobalStyle = createGlobalStyle`
     list-style: none;
     outline: none;
     box-sizing:border-box;
+    font-size: 16px;
+    @media (min-width: 1920px) {
+      font-size: 24px;
+  }
+    @media (max-width: 500px) {
+      font-size: 12px;
+  }
   }
   #root {
     display: flex;

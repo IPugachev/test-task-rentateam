@@ -6,4 +6,7 @@ export const Wrapper = styled.section`
   align-items: center;
   background: #ffffff;
   width: 87%;
+  @media (max-width: 740px) {
+    width: 95%;
+  }
 `

@@ -6,8 +6,8 @@ export const Label = styled.label`
 `
 export const Title = styled.span`
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 32px;
-  line-height: 40px;
+  font-size: 2rem;
+  line-height: 2.5rem;
 `
 export const AddressInput = styled.input`
   width: 210px;
@@ -16,6 +16,6 @@ export const AddressInput = styled.input`
   border: 0px;
   border-radius: 4px;
   font-family: 'Abel', sans-serif;
-  font-size: 16px;
-  line-height: 22px;
+  font-size: 1rem;
+  line-height: 1.35rem;
 `

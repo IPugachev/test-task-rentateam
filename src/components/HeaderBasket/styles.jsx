@@ -14,6 +14,7 @@ export const Wrapper = styled.div`
 export const BasketHeader = styled.div`
   display: flex;
   position: sticky;
+  overflow: visible !important;
   top: 0px;
   justify-content: space-between;
   align-items: center;
@@ -40,12 +41,16 @@ export const BasketButton = styled.div`
   border-radius: 18px;
   gap: 5px;
   cursor: pointer;
+  @media (min-width: 1920px) {
+    border-radius: 36px;
+    padding: 12px 20px;
+  }
 `
 export const BasketPrice = styled.span`
   font-family: 'Cera Condensed Pro';
   color: #ffffff;
-  font-size: 20px;
-  line-height: 25px;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
 `
 
 export const Basket = styled(BasketIcon)`
