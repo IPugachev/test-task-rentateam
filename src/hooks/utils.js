@@ -1,17 +1,22 @@
-export const postData = async (url, data) => {
-  const response = await fetch(url, {
-    method: 'POST',
-    mode: 'cors',
-    cache: 'no-cache',
-    credentials: 'same-origin',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-    },
-    redirect: 'follow',
-    referrerPolicy: 'no-referrer',
-    body: JSON.stringify(data),
-  })
-  console.log(data)
-  return response
+export const throttle = (func, ms) => {
+  let locked = false
+
+  return function () {
+    if (locked) return
+
+    const context = this
+    const args = arguments
+
+    locked = true
+
+    setTimeout(() => {
+      func.apply(context, args)
+      locked = false
+    }, ms)
+  }
+}
+
+export const scrollTo = (element) => {
+  const y = element.getBoundingClientRect().top + window.pageYOffset
+  window.scrollTo({ top: y - (window.innerHeight - element.offsetHeight) / 2, behavior: 'smooth' })
 }

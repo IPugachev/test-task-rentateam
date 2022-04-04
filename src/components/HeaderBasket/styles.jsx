@@ -2,6 +2,7 @@ import { ReactComponent as Icon } from '../../assets/icons/header-icon.svg'
 import { ReactComponent as BurgerIcon } from '../../assets/icons/menu-burger.svg'
 import { ReactComponent as BasketIcon } from '../../assets/icons/basket.svg'
 import styled from 'styled-components'
+import { css } from 'styled-components'
 
 export const Wrapper = styled.div`
   display: flex;
@@ -13,14 +14,25 @@ export const Wrapper = styled.div`
 `
 export const BasketHeader = styled.div`
   display: flex;
-  position: sticky;
-  overflow: visible !important;
-  top: 0px;
+  position: fixed;
+  overflow: visible;
+  top: 0;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   padding: 10px 0;
   background: #ffffff;
+  transition: transform 0.3s ease;
+  z-index: 11;
+  height: 64px;
+  padding: 10px 6.5%;
+  ${({ isOut }) => isOut && 'transform:translateY(-100%);'}
+
+  ${({ isVisible }) =>
+    isVisible &&
+    css`
+      transform: translateY(0);
+    `}
 `
 export const HeaderIcon = styled(Icon)`
   position: absolute;

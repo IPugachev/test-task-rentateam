@@ -1,18 +1,17 @@
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { throttle } from '../components/CategoryCards/utils'
+import { throttle } from './utils'
 import { setCategory } from '../store/actions/uiActions'
 
-export const useCategoryTrack = ({ id }) => {
+export const useCategoryTrack = () => {
   const dispatch = useDispatch()
   useEffect(() => {
     const scrollTracker = () => {
       dispatch(setCategory(document.elementFromPoint(0, window.innerHeight / 2).id))
     }
-
-    window.addEventListener('scroll', throttle(scrollTracker, 500))
+    window.addEventListener('scroll', throttle(scrollTracker, 100))
     return () => {
-      window.removeEventListener('scroll', throttle(scrollTracker, 500))
+      window.removeEventListener('scroll', throttle(scrollTracker, 100))
     }
-  }, [id, dispatch])
+  }, [dispatch])
 }

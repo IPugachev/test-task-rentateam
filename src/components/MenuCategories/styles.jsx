@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const ProductSection = styled.section`
   width: 100%;
   padding: 40px 0;
-  background-color: ${({ categoryStyleProp }) => (categoryStyleProp ? 'rgb(247, 246, 245)' : 'rgb(255, 255, 255)')};
+  background-color: ${({ categoryStyleProp }) => (!categoryStyleProp ? 'rgb(247, 246, 245)' : 'rgb(255, 255, 255)')};
 `
 
 export const ProductContainer = styled.div`

@@ -1,8 +1,11 @@
 import styled from 'styled-components'
 import { css } from 'styled-components'
 
-export const MenuNavReplacer = styled.section`
+export const HeaderNavWrapper = styled.section`
+  display: flex;
   height: 64px;
+  width: 100%;
+  justify-content: center;
 `
 export const Categories = styled.section`
   display: flex;
@@ -14,26 +17,40 @@ export const Categories = styled.section`
   background-color: #fff;
   overflow-y: hidden;
   overflow-x: hidden;
-
-  &::-webkit-scrollbar {
-    height: 12px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: rgb(237, 236, 235);
-    border-bottom: 2px solid #fff;
-    border-radius: 5px;
-  }
+  scroll-behavior: smooth;
+  transition: top 0.3s ease;
   ${({ isFixed }) =>
     !isFixed &&
     css`
       position: fixed;
       top: 0;
-      z-index: 100;
+      z-index: 10;
       padding: 0 6.5%;
       border-bottom: 1px solid rgba(247, 246, 245);
     `}
+  ${({ isVisible, isFixed }) => isVisible && !isFixed && 'top: 64px;'}
+    
+
+  &::-webkit-scrollbar {
+    height: 12px;
+  }
+  &::-webkit-scrollbar-thumb {
+    box-sizing: border-box;
+    background: rgb(237, 236, 235);
+    border-bottom: 2px solid #fff;
+    border-radius: 5px;
+  }
+
   @media (max-width: 930px) {
-    overflow-x: scroll;
+    &:hover {
+      overflow-x: scroll;
+      height: 75px;
+    }
+  }
+  @media (max-width: 500px) {
+    &:hover {
+      height: 76px;
+    }
   }
 `
 export const Category = styled.a`

@@ -15,7 +15,7 @@ import {
 } from './styles'
 import Loading from '../../assets/img/loading.png'
 
-export const ProductCard = ({ productData, styleValue, activeDilevery, orderCount, loadFlag }) => {
+export const MenuProductCard = ({ productData, styleValue, activeDilevery, orderCount, loadFlag }) => {
   const dispatch = useDispatch()
   const addProductToBasket = (product) => {
     dispatch(addProduct(product))
@@ -23,7 +23,7 @@ export const ProductCard = ({ productData, styleValue, activeDilevery, orderCoun
   const deleteProductFromBasket = (product) => {
     dispatch(removeProduct(product))
   }
-  // {loadFlag?url:productData.img}
+
   const flagText = productData.flag === 'new' ? 'Новое' : productData.flag === 'hit' ? 'Хит' : ''
   return (
     <Card availiable={productData.delivery && activeDilevery} categoryStyleProp={styleValue}>
@@ -31,7 +31,7 @@ export const ProductCard = ({ productData, styleValue, activeDilevery, orderCoun
         <CardFlag flag={productData.flag}>
           <CardFlagText>{flagText}</CardFlagText>
         </CardFlag>
-        <CardImage src={productData.img} alt={productData.name} />
+        <CardImage src={loadFlag ? productData.img : Loading} loadFlag={loadFlag} alt={productData.name} />
         <CardButtonsContainer isDisable={orderCount ? false : true}>
           <CardButton onClick={() => deleteProductFromBasket(productData)} type={false} />
           <Price>{orderCount}</Price>

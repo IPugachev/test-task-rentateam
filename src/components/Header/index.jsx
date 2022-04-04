@@ -1,30 +1,26 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
+import { useShowBasket } from '../../hooks/useShowBasket'
 import { useValidation } from '../../hooks/useValidation'
-import { DeliverySection } from '../DeliverySection'
+import { HeaderDeliverySection } from '../HeaderDeliverySection'
 import { HeaderBasket } from '../HeaderBasket'
-import { MenuNav } from '../MenuNav'
+import { HeaderNav } from '../HeaderNav'
 import { Wrapper } from './styles'
 
 export const Header = ({ categories }) => {
-  const [fixedMenuNav, setFixedMenuNav] = useState(true)
+  const [fixedHeaderComponents, setFixedHeaderComponents] = useState(true)
   const [tooltip, setTooltip] = useValidation()
+  const isVisible = useSelector((store) => store.ui.basketPosition)
+  useShowBasket()
+  const breakPoint = document.getElementById('delivery-section')
+  const observer = new IntersectionObserver((entries) => setFixedHeaderComponents(entries[0].isIntersecting))
+  breakPoint && observer.observe(breakPoint)
 
-  useEffect(() => {
-    const breakPoint = document.getElementById('breakPoint')
-    const observer = new IntersectionObserver((entries) => setFixedMenuNav(entries[0].isIntersecting))
-
-    breakPoint && observer.observe(breakPoint)
-
-    return () => {
-      breakPoint && observer.unobserve(breakPoint)
-    }
-  }, [])
   return (
     <Wrapper>
-      <HeaderBasket onClick={setTooltip} />
-      <DeliverySection tooltipWarning={tooltip} city='Москва' />
-      <div id='breakPoint'></div>
-      <MenuNav fixedMenuNav={fixedMenuNav} categories={categories} />
+      <HeaderBasket isVisible={isVisible} onClick={setTooltip} />
+      <HeaderDeliverySection tooltipWarning={tooltip} city='Москва' />
+      <HeaderNav isVisible={isVisible} fixedHeaderComponents={fixedHeaderComponents} categories={categories} />
     </Wrapper>
   )
 }

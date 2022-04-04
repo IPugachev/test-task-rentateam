@@ -7,6 +7,9 @@ export const Nav = styled.section`
   align-items: center;
   height: max-content;
   margin: 80px 0 130px;
+  @media (min-width: 1920px) {
+    justify-content: space-around;
+  }
   @media (max-width: 1080px) {
     flex-direction: column;
     margin: 50px 0 100px;
@@ -16,6 +19,9 @@ export const Nav = styled.section`
 export const LinksWrapper = styled.div`
   display: flex;
   gap: 100px;
+  @media (min-width: 1920px) {
+    gap: 200px;
+  }
   @media (max-width: 1200px) {
     gap: 50px;
   }

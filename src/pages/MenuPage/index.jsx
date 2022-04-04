@@ -1,29 +1,21 @@
-import React, { useLayoutEffect, useState } from 'react'
+import React, { useLayoutEffect } from 'react'
 import { Footer } from '../../components/Footer'
 import { Header } from '../../components/Header'
-import { CategoryCards } from '../../components/CategoryCards'
+import { MenuCategories } from '../../components/MenuCategories'
+import { useDispatch, useSelector } from 'react-redux'
+import { getMenu } from '../../store/actions/menuActions'
 
 export const MenuPage = () => {
-  const [categories, setCategories] = useState([])
-  console.log('page render')
-
+  const dispatch = useDispatch()
+  const { menu } = useSelector((store) => store.menu)
   useLayoutEffect(() => {
-    const fetchData = async () => {
-      try {
-        const jsonData = await fetch('http://localhost:4000/menu')
-        const data = await jsonData.json()
-        setCategories(data.categories)
-      } catch (e) {
-        console.log('something wrong, check backend')
-      }
-    }
-    fetchData()
-  }, [])
+    dispatch(getMenu())
+  }, [dispatch])
   return (
     <>
-      <Header categories={categories} />
-      {categories.map((category, index) => {
-        return <CategoryCards category={category} categoryStyleProp={index} key={category.id} />
+      <Header categories={menu} />
+      {menu.map((category, index) => {
+        return <MenuCategories category={category} categoryStyleProp={index} key={category.id} />
       })}
       <Footer />
     </>

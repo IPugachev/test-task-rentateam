@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { setDeliveryState } from '../../store/actions/basketActions'
-import { AddressForm } from '../AddressForm'
+import { HeaderAddressForm } from '../HeaderAddressForm'
 import { DeliveryButton } from '../UI/button/DeliveryButton'
 import { DeliveryButtonGroup, DeliveryInfoSection, DeliverySectionContainer, Location } from './styles'
 
-export const DeliverySection = ({ tooltipWarning, city }) => {
+export const HeaderDeliverySection = ({ tooltipWarning, city }) => {
   const [activeDileveryButton, setActiveDileveryButton] = useState(true)
 
   const dispatch = useDispatch()
@@ -15,8 +15,9 @@ export const DeliverySection = ({ tooltipWarning, city }) => {
       dispatch(setDeliveryState(type))
     }
   }
+
   return (
-    <DeliverySectionContainer>
+    <DeliverySectionContainer id='delivery-section'>
       <DeliveryInfoSection>
         <Location>{`Доставка г.${city}`}</Location>
         <DeliveryButtonGroup>
@@ -33,7 +34,7 @@ export const DeliverySection = ({ tooltipWarning, city }) => {
         </DeliveryButtonGroup>
       </DeliveryInfoSection>
 
-      <AddressForm activeDileveryButton={activeDileveryButton} tooltipWarning={tooltipWarning} />
+      <HeaderAddressForm activeDileveryButton={activeDileveryButton} tooltipWarning={tooltipWarning} />
     </DeliverySectionContainer>
   )
 }

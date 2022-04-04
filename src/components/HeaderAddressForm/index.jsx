@@ -5,8 +5,9 @@ import { Input } from '../UI/input'
 import { Tooltip } from '../UI/tooltip'
 import { Form } from './styles'
 
-export const AddressForm = ({ activeDileveryButton, tooltipWarning }) => {
+export const HeaderAddressForm = ({ activeDileveryButton, tooltipWarning }) => {
   const dispatch = useDispatch()
+
   return (
     <Form activeDileveryButton={activeDileveryButton}>
       <Input

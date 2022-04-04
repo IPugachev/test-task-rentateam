@@ -2,15 +2,15 @@ import styled from 'styled-components'
 import { keyframes } from 'styled-components'
 import { css } from 'styled-components'
 
-// const rotate = keyframes`
-//   from {
-//     transform: rotate(0deg);
-//   }
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
 
-//   to {
-//     transform: rotate(360deg);
-//   }
-// `
+  to {
+    transform: rotate(360deg);
+  }
+`
 
 export const Card = styled.div`
   display: flex;
@@ -24,7 +24,7 @@ export const Card = styled.div`
   cursor: pointer;
   ${({ availiable }) => availiable && 'display: none'};
   &:hover {
-    background-color: ${({ categoryStyleProp }) => (!categoryStyleProp ? 'rgb(247, 246, 245)' : 'rgb(255, 255, 255)')};
+    background-color: ${({ categoryStyleProp }) => (categoryStyleProp ? 'rgb(247, 246, 245)' : 'rgb(255, 255, 255)')};
     color: #000;
   }
   &:hover div img {
@@ -96,8 +96,13 @@ export const CardImage = styled.img`
   transition: all 0.2s ease-in-out;
   object-fit: contain;
   width: 100%;
+  ${({ loadFlag }) =>
+    !loadFlag &&
+    css`
+      animation: ${rotate} 5s linear infinite;
+    `}
 `
-/* animation: ${rotate} 5s linear infinite; */
+
 export const CardButtonsContainer = styled.div`
   position: absolute;
   bottom: 16px;
