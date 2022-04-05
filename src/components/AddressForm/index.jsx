@@ -1,8 +1,8 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setDeliveryFormState } from '../../store/actions/uiActions'
-import { Input } from '../UI/Input'
-import { Tooltip } from '../UI/Tooltip'
+import { Input } from '../UI/input'
+import { Tooltip } from '../UI/tooltip'
 import { Form } from './styles'
 
 export const AddressForm = ({ activeDileveryButton, tooltipWarning }) => {
