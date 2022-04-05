@@ -10,6 +10,7 @@ import { getMenu } from '../../store/actions/menuActions'
 import { useValidation } from '../../hooks/useValidation'
 
 export const MenuPage = () => {
+  console.log(process.env)
   const server =
     process.env.NODE_ENV === 'development'
       ? 'http://localhost:4000'
