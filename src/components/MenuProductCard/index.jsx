@@ -1,8 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 
-import { addProduct, removeProduct } from '../../store/actions/basketActions'
-import { CardButton } from '../UI/buttons/CardButton'
 import {
   Card,
   CardButtonsContainer,
@@ -14,6 +12,8 @@ import {
   CardName,
   Price,
 } from './styles'
+import { addProduct, removeProduct } from '../../store/actions/basketActions'
+import { CardButton } from '../UI/buttons/CardButton'
 import Loading from '../../assets/img/loading.png'
 
 export const MenuProductCard = ({ productData, isEven, activeDilevery, orderCount, loadFlag }) => {

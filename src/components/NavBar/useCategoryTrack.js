@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { throttle } from './utils'
-import { setCategory } from '../store/actions/uiActions'
+import { throttle } from '../../utils/app'
+import { setCategory } from '../../store/actions/uiActions'
 
 export const useCategoryTrack = () => {
   const dispatch = useDispatch()

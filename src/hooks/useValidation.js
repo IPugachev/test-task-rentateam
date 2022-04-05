@@ -2,7 +2,7 @@ import { useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addBasket } from '../store/actions/basketActions'
 import { setDeliveryFormState } from '../store/actions/uiActions'
-import { scrollTo } from './utils'
+import { scrollTo } from '../utils/app'
 
 export const useValidation = () => {
   const [tooltipWarning, setTooltipWarning] = useState([])
@@ -11,14 +11,11 @@ export const useValidation = () => {
   const timer = useRef()
   const dispatch = useDispatch()
   const validation = () => {
-    const firstAddressInputElement = document.getElementById('addressInput0')
-    const secondAddressInputElement = document.getElementById('addressInput1')
+    const firstAddressInputElement = document.getElementById('addressForm')
     if (addressFormState[0] && addressFormState[1]) {
       dispatch(addBasket('http://localhost:4000/basket', basketData))
       dispatch(setDeliveryFormState('', 0))
       dispatch(setDeliveryFormState('', 1))
-      firstAddressInputElement.value = ''
-      secondAddressInputElement.value = ''
     } else {
       scrollTo(firstAddressInputElement)
       let side = addressFormState[0] ? 'right' : 'left'

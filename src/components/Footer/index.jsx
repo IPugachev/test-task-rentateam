@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { FooterNav } from '../FooterNav'
 import { FooterSocials } from '../FooterSocials'
 import { FooterIcon, IconContainer, Wrapper } from './styles'

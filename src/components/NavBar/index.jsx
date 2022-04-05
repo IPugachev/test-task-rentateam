@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { useCategoryTrack } from '../../hooks/useCategoryTrack'
-import { useNavScroll } from '../../hooks/useNavScroll'
+
 import { NavBarContainer, Category, CategoryName, NavBarWrapper } from './styles'
+import { useCategoryTrack } from './useCategoryTrack'
+import { useNavScroll } from './useNavScroll'
 import { scrollToCategory } from './utils'
 
 export const NavBar = ({ menu }) => {
@@ -17,20 +18,18 @@ export const NavBar = ({ menu }) => {
   useNavScroll()
   useCategoryTrack()
   return (
-    <>
-      <NavBarWrapper isFixed={isNavBarFixed}>
-        <NavBarContainer id='navbar' isFixed={isNavBarFixed} isVisible={isVisible}>
-          {menu.map((category) => (
-            <Category
-              key={category.id}
-              id={`${category.id}NavButton`}
-              isCurrent={curruntCategory === category.id}
-              onClick={() => scrollToCategory(category.id)}>
-              <CategoryName>{category.name}</CategoryName>
-            </Category>
-          ))}
-        </NavBarContainer>
-      </NavBarWrapper>
-    </>
+    <NavBarWrapper isFixed={isNavBarFixed}>
+      <NavBarContainer id='navbar' isFixed={isNavBarFixed} isVisible={isVisible}>
+        {menu.map((category) => (
+          <Category
+            key={category.id}
+            id={`${category.id}NavButton`}
+            isCurrent={curruntCategory === category.id}
+            onClick={() => scrollToCategory(category.id)}>
+            <CategoryName>{category.name}</CategoryName>
+          </Category>
+        ))}
+      </NavBarContainer>
+    </NavBarWrapper>
   )
 }

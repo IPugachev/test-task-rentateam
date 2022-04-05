@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 
 import { Basket, BasketButton, Container, BasketPrice, HeaderIcon, MenuBurger, Wrapper } from './styles'
+import { useShowBasket } from './useShowBasket'
 
 export const Header = ({ onClick }) => {
   const [isOut, setIsOut] = useState(true)
@@ -10,7 +11,7 @@ export const Header = ({ onClick }) => {
   const breakPoint = document.getElementById('header')
   const observer = new IntersectionObserver((entries) => setIsOut(entries[0].isIntersecting))
   breakPoint && observer.observe(breakPoint)
-
+  useShowBasket()
   return (
     <Wrapper id='header'>
       <Container isVisible={isVisible} isOut={!isOut}>

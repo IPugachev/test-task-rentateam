@@ -19,6 +19,7 @@ export const MenuCategories = ({ category, index }) => {
     )
     observingFlag ? observer.unobserve(section) : observer.observe(section)
   }, [category.id, observingFlag])
+
   const isEven = Boolean(index % 2)
   return (
     <ProductSection isEven={isEven} id={category.id}>

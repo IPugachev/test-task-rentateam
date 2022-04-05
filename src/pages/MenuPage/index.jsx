@@ -7,12 +7,11 @@ import { NavBar } from '../../components/NavBar'
 import { DeliverySection } from '../../components/DeliverySection'
 import { MenuCategories } from '../../components/MenuCategories'
 import { getMenu } from '../../store/actions/menuActions'
-import { useShowBasket } from '../../hooks/useShowBasket'
 import { useValidation } from '../../hooks/useValidation'
 
 export const MenuPage = () => {
-  console.log('PAGE')
-
+  console.log('PAGE', process.env)
+  // NODE_ENV==='development'?'lo'
   const dispatch = useDispatch()
   const { menu } = useSelector((store) => store.menu)
 
@@ -21,7 +20,6 @@ export const MenuPage = () => {
   }, [dispatch])
 
   const [tooltip, setTooltip] = useValidation()
-  useShowBasket()
 
   return (
     <>

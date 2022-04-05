@@ -3,18 +3,14 @@ import { FooterLogo, LinksContainer, LinksWrapper, Nav } from './styles'
 
 export const FooterNav = () => {
   const getLinks = () => {
-    let arr = []
-    for (let i = 0; i < 5; i++) {
-      arr.push(
-        <a href='!' key={i}>
-          Подраздел
-        </a>
-      )
-    }
     return (
       <>
         <h5>Раздел№1</h5>
-        {arr}
+        {[...new Array(5)].map((_, index) => (
+          <a href='!' key={index}>
+            Подраздел
+          </a>
+        ))}
       </>
     )
   }

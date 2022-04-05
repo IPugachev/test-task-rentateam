@@ -1,4 +1,4 @@
-import { scrollTo } from '../../hooks/utils'
+import { scrollTo } from '../../utils/app'
 
 export const scrollToCategory = (id) => {
   const category = document.getElementById(id)
