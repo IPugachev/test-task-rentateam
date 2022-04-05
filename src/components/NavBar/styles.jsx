@@ -1,15 +1,27 @@
 import styled from 'styled-components'
 import { css } from 'styled-components'
 
-export const HeaderNavWrapper = styled.section`
+export const NavBarWrapper = styled.section`
   display: flex;
   height: 64px;
-  width: 100%;
   justify-content: center;
+
+  width: 87%;
+  @media (max-width: 740px) {
+    width: 95%;
+  }
+  ${({ isFixed }) =>
+    isFixed &&
+    css`
+      @media (max-width: 930px) {
+        margin-bottom: 11px;
+      }
+    `}
 `
-export const Categories = styled.section`
+export const NavBarContainer = styled.div`
   display: flex;
   width: 100%;
+  height: 100%;
   gap: 10px;
   justify-content: space-between;
   align-items: center;
@@ -45,6 +57,7 @@ export const Categories = styled.section`
     &:hover {
       overflow-x: scroll;
       height: 75px;
+      /* margin: 6px 0; */
     }
   }
   @media (max-width: 500px) {

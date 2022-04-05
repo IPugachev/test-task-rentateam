@@ -1,34 +1,34 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addBasket } from '../store/actions/basketActions'
 import { setDeliveryFormState } from '../store/actions/uiActions'
 import { scrollTo } from './utils'
 
 export const useValidation = () => {
-  const addressFormState = useSelector((store) => store.ui.addressForm)
-  const [timerId, settimerId] = useState(null)
   const [tooltipWarning, setTooltipWarning] = useState([])
-  const dispatch = useDispatch()
-
+  const addressFormState = useSelector((store) => store.ui.addressForm)
   const basketData = useSelector((store) => store.basket.products)
+  const timer = useRef()
+  const dispatch = useDispatch()
   const validation = () => {
-    const inputElements = document.querySelectorAll('input')
+    const firstAddressInputElement = document.getElementById('addressInput0')
+    const secondAddressInputElement = document.getElementById('addressInput1')
     if (addressFormState[0] && addressFormState[1]) {
       dispatch(addBasket('http://localhost:4000/basket', basketData))
       dispatch(setDeliveryFormState('', 0))
       dispatch(setDeliveryFormState('', 1))
-      inputElements[0].value = ''
-      inputElements[1].value = ''
+      firstAddressInputElement.value = ''
+      secondAddressInputElement.value = ''
     } else {
-      scrollTo(inputElements[0])
+      scrollTo(firstAddressInputElement)
       let side = addressFormState[0] ? 'right' : 'left'
       setTooltipWarning(addressFormState[0] ? ['active', side] : ['active', side])
-      clearTimeout(timerId)
-      settimerId(
-        setTimeout(() => {
-          setTooltipWarning(['', side])
-        }, 3000)
-      )
+      if (timer.current) {
+        clearTimeout(timer.current)
+      }
+      timer.current = setTimeout(() => {
+        setTooltipWarning(['', side])
+      }, 3000)
     }
   }
   return [tooltipWarning, validation]

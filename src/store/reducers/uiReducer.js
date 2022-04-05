@@ -3,9 +3,9 @@ import { uiActions } from '../actions/uiActions'
 const initialState = {
   category: null,
   addressForm: ['', ''],
-  basketPosition: false,
-  currentPosition: 0,
-  previousPosition: 0,
+  headerVisible: false,
+  currentScrollYPosition: 0,
+  previousScrollYPosition: 0,
 }
 
 export const uiReducer = (state = initialState, action) => {
@@ -16,6 +16,7 @@ export const uiReducer = (state = initialState, action) => {
         return { ...state }
       }
       return state
+
     case uiActions.SET_DELIVERY_FORM_STATE:
       if (action.payload.id) {
         state.addressForm[1] = action.payload.value
@@ -23,15 +24,17 @@ export const uiReducer = (state = initialState, action) => {
         state.addressForm[0] = action.payload.value
       }
       return { ...state }
-    case uiActions.SET_BASKET_HEADER_POSITION:
-      state.previousPosition = state.currentPosition
-      state.currentPosition = action.payload.position
-      let bool = state.previousPosition > state.currentPosition
-      if (state.basketPosition !== bool) {
-        state.basketPosition = bool
+
+    case uiActions.SET_HEADER_POSITION:
+      state.previousScrollYPosition = state.currentScrollYPosition
+      state.currentScrollYPosition = action.payload.position
+      let temp = state.previousScrollYPosition > state.currentScrollYPosition
+      if (state.headerVisible !== temp) {
+        state.headerVisible = temp
         return { ...state }
       }
       return state
+
     default:
       return state
   }

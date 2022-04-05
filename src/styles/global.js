@@ -9,17 +9,20 @@ export const GlobalStyle = createGlobalStyle`
     outline: none;
     box-sizing:border-box;
     font-size: 16px;
+
     @media (min-width: 1920px) {
-      font-size: 24px;
-  }
+      font-size: 18px;
+    }
     @media (max-width: 500px) {
       font-size: 12px;
+    }
   }
-  }
+
   #root {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: #ffffff;
     width: 100%;
     margin: 0 auto;
   }

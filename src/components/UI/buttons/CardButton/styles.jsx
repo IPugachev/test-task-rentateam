@@ -16,8 +16,8 @@ export const Button = styled.div`
   }
 
   @media (min-width: 1920px) {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
   }
 
   @media (max-width: 500px) {
@@ -27,14 +27,14 @@ export const Button = styled.div`
 `
 export const AddIcon = styled(Add)`
   @media (min-width: 1920px) {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
   }
 `
 
 export const DeleteIcon = styled(Delete)`
   @media (min-width: 1920px) {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
   }
 `

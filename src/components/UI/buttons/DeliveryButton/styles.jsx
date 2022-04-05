@@ -21,6 +21,6 @@ export const ButtonText = styled.span`
   font-size: 16px;
   line-height: 24px;
   @media (min-width: 1920px) {
-    font-size: 32px;
+    font-size: 24px;
   }
 `

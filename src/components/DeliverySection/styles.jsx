@@ -4,9 +4,12 @@ export const DeliverySectionContainer = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  width: 87%;
+  @media (max-width: 740px) {
+    width: 95%;
+  }
 `
-export const DeliveryInfoSection = styled.div`
+export const DeliverySectionInfo = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;

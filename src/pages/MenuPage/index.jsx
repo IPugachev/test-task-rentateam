@@ -1,22 +1,36 @@
 import React, { useLayoutEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
 import { Footer } from '../../components/Footer'
 import { Header } from '../../components/Header'
+import { NavBar } from '../../components/NavBar'
+import { DeliverySection } from '../../components/DeliverySection'
 import { MenuCategories } from '../../components/MenuCategories'
-import { useDispatch, useSelector } from 'react-redux'
 import { getMenu } from '../../store/actions/menuActions'
+import { useShowBasket } from '../../hooks/useShowBasket'
+import { useValidation } from '../../hooks/useValidation'
 
 export const MenuPage = () => {
+  console.log('PAGE')
+
   const dispatch = useDispatch()
   const { menu } = useSelector((store) => store.menu)
+
   useLayoutEffect(() => {
     dispatch(getMenu())
   }, [dispatch])
+
+  const [tooltip, setTooltip] = useValidation()
+  useShowBasket()
+
   return (
     <>
-      <Header categories={menu} />
-      {menu.map((category, index) => {
-        return <MenuCategories category={category} categoryStyleProp={index} key={category.id} />
-      })}
+      <Header onClick={setTooltip} />
+      <DeliverySection tooltipWarning={tooltip} city='Москва' />
+      <NavBar menu={menu} />
+      {menu.map((category, index) => (
+        <MenuCategories category={category} index={index} key={category.id} />
+      ))}
       <Footer />
     </>
   )

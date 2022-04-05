@@ -12,7 +12,6 @@ export const InputTooltip = styled.div`
   background: #000;
   color: white;
   transition: all 0.5s ease;
-  /* transition: left 0s ease; */
 
   user-select: none;
   @media (max-width: 740px) {
@@ -45,7 +44,6 @@ export const TooltipArrow = styled.div`
   }
   top: -2px;
   left: 50%;
-  /* transition: none; */
   visibility: hidden;
   @media (max-width: 740px) {
     left: 80%;

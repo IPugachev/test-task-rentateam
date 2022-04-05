@@ -13,7 +13,7 @@ export const Socials = styled.section`
   @media (max-width: 1080px) {
     flex-direction: column;
     align-items: center;
-    & :nth-child(3) {
+    & :nth-child(2) {
       order: -1;
     }
   }

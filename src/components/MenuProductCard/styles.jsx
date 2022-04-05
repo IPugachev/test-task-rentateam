@@ -24,7 +24,7 @@ export const Card = styled.div`
   cursor: pointer;
   ${({ availiable }) => availiable && 'display: none'};
   &:hover {
-    background-color: ${({ categoryStyleProp }) => (categoryStyleProp ? 'rgb(247, 246, 245)' : 'rgb(255, 255, 255)')};
+    background-color: ${({ isEven }) => (isEven ? 'rgb(247, 246, 245)' : 'rgb(255, 255, 255)')};
     color: #000;
   }
   &:hover div img {
@@ -74,8 +74,8 @@ export const CardFlag = styled.div`
   justify-content: center;
   z-index: 1;
   @media (min-width: 1920px) {
-    width: 90px;
-    height: 90px;
+    width: 60px;
+    height: 60px;
   }
   @media (max-width: 500px) {
     width: 40px;
@@ -129,8 +129,8 @@ export const CardButtonsContainer = styled.div`
   }
 
   @media (min-width: 1920px) {
-    bottom: 30px;
-    right: 30px;
+    bottom: 25px;
+    right: 25px;
     border-radius: 40px;
   }
   @media (max-width: 500px) {

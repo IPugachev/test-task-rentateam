@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { ReactComponent as Icon } from '../../assets/icons/footer-icon.svg'
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.footer`
   display: flex;
   flex-direction: column;
   width: 87%;
@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
     width: 95%;
   }
 `
-export const IconContainer = styled.section`
+export const IconContainer = styled.div`
   display: flex;
   justify-content: center;
   border-top: 1px solid rgba(247, 246, 245, 1);

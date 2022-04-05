@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import { useRef } from 'react'
 import { useSelector } from 'react-redux'
-import { MenuProductCard } from '../MenuProductCard'
-import { CategoryName, ProductContainer, ProductSection } from './styles'
 
-export const MenuCategories = ({ category, categoryStyleProp }) => {
+import { CategoryName, ProductContainer, ProductSection } from './styles'
+import { MenuProductCard } from '../MenuProductCard'
+
+export const MenuCategories = ({ category, index }) => {
   const basketState = useSelector((store) => store.basket)
+
+  /**
+   * Intersection Observer для lazy load картинок у товаров,
+   * относительно категории.
+   */
   const [observingFlag, setObservingFlag] = useState(false)
-  const containerRef = useRef(null)
-  console.log('rendered')
   useEffect(() => {
     const section = document.getElementById(category.id)
     const observer = new IntersectionObserver(
@@ -16,9 +19,9 @@ export const MenuCategories = ({ category, categoryStyleProp }) => {
     )
     observingFlag ? observer.unobserve(section) : observer.observe(section)
   }, [category.id, observingFlag])
-
+  const isEven = Boolean(index % 2)
   return (
-    <ProductSection categoryStyleProp={categoryStyleProp % 2} ref={containerRef} id={category.id}>
+    <ProductSection isEven={isEven} id={category.id}>
       <ProductContainer>
         <CategoryName>{category.name}</CategoryName>
         {category.products.map((product) => {
@@ -28,7 +31,7 @@ export const MenuCategories = ({ category, categoryStyleProp }) => {
             <MenuProductCard
               productData={product}
               key={product.id}
-              styleValue={categoryStyleProp % 2}
+              isEven={isEven}
               activeDilevery={basketState.delivery}
               orderCount={orderCount}
               loadFlag={observingFlag}

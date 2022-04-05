@@ -1,7 +1,8 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
+
 import { addProduct, removeProduct } from '../../store/actions/basketActions'
-import { CardButton } from '../UI/button/CardButton'
+import { CardButton } from '../UI/buttons/CardButton'
 import {
   Card,
   CardButtonsContainer,
@@ -15,7 +16,7 @@ import {
 } from './styles'
 import Loading from '../../assets/img/loading.png'
 
-export const MenuProductCard = ({ productData, styleValue, activeDilevery, orderCount, loadFlag }) => {
+export const MenuProductCard = ({ productData, isEven, activeDilevery, orderCount, loadFlag }) => {
   const dispatch = useDispatch()
   const addProductToBasket = (product) => {
     dispatch(addProduct(product))
@@ -26,7 +27,7 @@ export const MenuProductCard = ({ productData, styleValue, activeDilevery, order
 
   const flagText = productData.flag === 'new' ? 'Новое' : productData.flag === 'hit' ? 'Хит' : ''
   return (
-    <Card availiable={productData.delivery && activeDilevery} categoryStyleProp={styleValue}>
+    <Card availiable={productData.delivery && activeDilevery} isEven={isEven}>
       <CardImageBox>
         <CardFlag flag={productData.flag}>
           <CardFlagText>{flagText}</CardFlagText>
