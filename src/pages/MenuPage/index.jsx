@@ -10,21 +10,23 @@ import { getMenu } from '../../store/actions/menuActions'
 import { useValidation } from '../../hooks/useValidation'
 
 export const MenuPage = () => {
-  console.log('PAGE', process.env)
-  // NODE_ENV==='development'?'lo'
+  const server =
+    process.env.NODE_ENV === 'development'
+      ? 'http://localhost:4000'
+      : 'https://test-task-rentateam-server.herokuapp.com'
+
+  const [tooltip, setTooltip] = useValidation(server)
   const dispatch = useDispatch()
-  const { menu } = useSelector((store) => store.menu)
-
   useLayoutEffect(() => {
-    dispatch(getMenu())
-  }, [dispatch])
+    dispatch(getMenu(server))
+  }, [dispatch, server])
 
-  const [tooltip, setTooltip] = useValidation()
+  const { menu } = useSelector((store) => store.menu)
 
   return (
     <>
       <Header onClick={setTooltip} />
-      <DeliverySection tooltipWarning={tooltip} city='Москва' />
+      <DeliverySection tooltipWarning={tooltip} city='Москва' server={server} />
       <NavBar menu={menu} />
       {menu.map((category, index) => (
         <MenuCategories category={category} index={index} key={category.id} />

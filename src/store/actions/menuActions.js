@@ -4,12 +4,12 @@ export const menuActions = {
   GET_MENU_FAILURE: 'GET_MENU_STARTED',
 }
 
-export const getMenu = () => {
+export const getMenu = (server) => {
   return async (dispatch) => {
     dispatch(getDataStarted())
 
     try {
-      const jsonData = await fetch('http://localhost:4000/menu')
+      const jsonData = await fetch(`${server}/menu`)
       const data = await jsonData.json()
 
       dispatch(getDataSuccess(data.categories))

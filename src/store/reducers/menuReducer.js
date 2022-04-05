@@ -22,6 +22,7 @@ export default function categoriesReducer(state = initialState, action) {
         menu: action.payload,
       }
     case menuActions.GET_MENU_FAILURE:
+      console.log('Error:', action.payload.error)
       return {
         ...state,
         loading: false,
