@@ -14,7 +14,7 @@ export default function categoriesReducer(state = initialState, action) {
         loading: true,
       }
     case menuActions.GET_MENU_SUCCESS:
-      console.log('Data from back:', action.payload)
+      console.log('Data from server:', action.payload)
       return {
         ...state,
         loading: false,
